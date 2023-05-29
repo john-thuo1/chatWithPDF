@@ -31,3 +31,9 @@ This project allows you to upload a PDF document and ask questions about its con
    ```shell
    streamlit run App.py
    ```
+
+## Next Steps
+1. Add support for multiple file formats
+2. Implement Document Indexing techniques by use of libraries such as  Elasticsearch or Apache Solr 
+3. Enhance question answering capabilities: Explore advanced question answering techniques, such as using transformer models like BERT or    GPT, to improve the accuracy and comprehension of the system.
+4. Use a model that supports multiple languages, most notably some BERT models do support this.
