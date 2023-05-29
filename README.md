@@ -3,3 +3,21 @@ This project allows you to upload a PDF document and ask questions about its con
 
 # Project Screen
 []()
+
+
+Installation
+Clone the repository:
+
+bash
+Copy code
+git clone <repository-url>
+Navigate to the project directory:
+
+bash
+Copy code
+cd project-directory
+Install the required dependencies:
+
+Copy code
+pip install -r requirements.txt
+Usage
