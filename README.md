@@ -2,7 +2,9 @@
 This project allows you to upload a PDF document and ask questions about its content. It uses langchain, openapi ai model and  Facebook Ai Similarity Search(FAISS) library to process the text in the PDF and provide answers to questions pertaining the document.
 
 # Project Screen
-[]()
+![image](https://github.com/john-thuo1/chatWithPDF/assets/108690517/d4565154-de20-4fe2-9213-f8bb2c66138b)
+### Cost
+![image](https://github.com/john-thuo1/chatWithPDF/assets/108690517/c4a72a25-1aeb-447c-b4f4-90b38225f9d3)
 
 ## Installation
 
