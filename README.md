@@ -4,20 +4,28 @@ This project allows you to upload a PDF document and ask questions about its con
 # Project Screen
 []()
 
+## Installation
 
-Installation
-Clone the repository:
+1. Clone the repository:
 
-bash
-Copy code
-git clone <repository-url>
-Navigate to the project directory:
+   ```shell
+   git clone https://github.com/john-thuo1/chatWithPDF
+   cd into your directory/ open with vscode
+   ```
+2. Create a Virtual Environment:
+    ```shell
+    python -m venv env
+    ```
+3. Install the required dependencies:
 
-bash
-Copy code
-cd project-directory
-Install the required dependencies:
+   ```shell
+   pip install -r requirements.txt
+   ```
+4. Create OpenAI API Key and add it to your .env file:
+   [openai](https://platform.openai.com/)
+   
+5. Run the application:
 
-Copy code
-pip install -r requirements.txt
-Usage
+   ```shell
+   streamlit run App.py
+   ```
