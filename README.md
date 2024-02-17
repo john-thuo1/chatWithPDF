@@ -25,6 +25,10 @@ This project allows you to upload a PDF document and ask questions about its con
    ```
 4. Create OpenAI API Key and add it to your .env file:
    [openai](https://platform.openai.com/)
+   ```shell
+   Specify the variable as follows :
+   OPENAI_API_KEY = "Secret Key"
+   ```
    
 5. Run the application:
 
