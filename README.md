@@ -1,43 +1,79 @@
 # chatWithPDF
-This project allows you to upload a PDF document and ask questions about its content. It uses langchain, openapi ai model and  Facebook Ai Similarity Search(FAISS) library to process the text in the PDF and provide answers to questions pertaining the document.
+This project allows you to upload a PDF document and ask questions about its content. It uses LangChain, OpenAI Embeddings, GPT-4, and the Facebook AI Similarity Search (FAISS) library to process the text in the PDF and provide answers to questions related to the document.
 
 ## Project Screen
-![image](https://github.com/john-thuo1/chatWithPDF/assets/108690517/d4565154-de20-4fe2-9213-f8bb2c66138b)
-### Cost
-![image](https://github.com/john-thuo1/chatWithPDF/assets/108690517/c4a72a25-1aeb-447c-b4f4-90b38225f9d3)
+![image](https://github.com/user-attachments/assets/17fef864-764e-453e-8bcc-fbc1365fa8a0)
 
 ## Installation
+
+### Option 1: Run the App Locally (Without Docker)
 
 1. Clone the repository:
 
    ```shell
    git clone https://github.com/john-thuo1/chatWithPDF
-   cd into your directory/ open with vscode
+   cd chatWithPDF
    ```
+
 2. Create a Virtual Environment:
+
     ```shell
     python -m venv env
     ```
+
 3. Install the required dependencies:
 
    ```shell
    pip install -r requirements.txt
    ```
-4. Create OpenAI API Key and add it to your .env file:
-   [openai](https://platform.openai.com/)
+
+4. Create an OpenAI API Key and add it to your `.env` file:
+   [OpenAI Platform](https://platform.openai.com/)
    ```shell
-   Specify the variable as follows :
-   OPENAI_API_KEY = "Secret Key"
+   OPENAI_API_KEY="your-secret-key"
    ```
-   
+
 5. Run the application:
 
    ```shell
    streamlit run App.py
    ```
 
-## Next Steps
-1. Add support for multiple file formats
-2. Implement Document Indexing techniques by use of libraries such as  Elasticsearch or Apache Solr 
-3. Enhance question answering capabilities: Explore advanced question answering techniques, such as using transformer models like BERT or    GPT, to improve the accuracy and comprehension of the system.
-4. Use a model that supports multiple languages, most notably some BERT models do support this.
+### Option 2: Run the App Using Docker
+
+1. **Clone the repository**:
+
+   ```shell
+   git clone https://github.com/john-thuo1/chatWithPDF
+   cd chatWithPDF
+   ```
+
+2. **Build the Docker image**:
+
+   First, ensure you have Docker installed and running on your system. Then, use the following command to build the image from the Dockerfile:
+
+   ```shell
+   docker-compose build
+   ```
+
+3. **Run the app with Docker**:
+
+   After the build is complete, you can run the app in a container using Docker Compose:
+
+   ```shell
+   docker-compose up
+   ```
+
+   This will start the app and map port `8501` from the container to the host machine. The application will be available at `http://localhost:8501`.
+
+4. **(Optional) Set up your OpenAI API Key**:
+
+   If you're using Docker, you can set your OpenAI API Key using environment variables. Either:
+
+   - Use a `.env` file (uncomment the `env_file` section in the `docker-compose.yml`).
+   - Alternatively, pass the environment variable manually at runtime:
+     ```shell
+     OPENAI_API_KEY=your-secret-key docker-compose up
+     ```
+
+   You can also store the OpenAI API key in your `.env` file and ensure the file is loaded with the Docker Compose configuration.
