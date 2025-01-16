@@ -73,7 +73,7 @@ This project allows you to upload a PDF document and ask questions about its con
    - Use a `.env` file (uncomment the `env_file` section in the `docker-compose.yml`).
    - Alternatively, pass the environment variable manually at runtime:
      ```shell
-     OPENAI_API_KEY=your-secret-key docker-compose up
+     OPENAI_API_KEY=your-secret-key
      ```
 
    You can also store the OpenAI API key in your `.env` file and ensure the file is loaded with the Docker Compose configuration.
