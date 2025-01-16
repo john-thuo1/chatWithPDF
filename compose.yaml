@@ -1,0 +1,16 @@
+services:
+  app:
+    image: chat_app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # env_file:
+    #   - .env
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    ports:
+      - "8501:8501"
+    volumes:
+      - .:/chat_app
+    
+  
