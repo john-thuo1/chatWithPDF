@@ -1,6 +1,7 @@
 Logs
 utilities/__pycache__
 modules/__pycache__
+tests/__pycache__
 README.Docker.md 
 chat_doc
 .env
