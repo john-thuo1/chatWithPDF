@@ -1,0 +1,6 @@
+**/__pycache__
+**/Logs
+**/.env
+**/README.Docker.md
+**/chat_doc
+**/.gitignore
