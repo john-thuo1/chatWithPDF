@@ -16,7 +16,6 @@ load_dotenv()
 
 
 def main() -> None:
-    """Main function to run the Streamlit app."""
     st.title("Chat with your PDF 💬")
 
     pdf = st.file_uploader("Upload your PDF Document", type="pdf")
@@ -40,7 +39,6 @@ def main() -> None:
         if query:
             Logger.info(f"Received query: {query}")
             docs = knowledgeBase.similarity_search(query)
-            Logger.debug(f"Found {len(docs)} similar documents.")
 
             llm = OpenAI()
             chain = load_qa_chain(llm, chain_type="stuff")
