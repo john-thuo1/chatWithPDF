@@ -4,3 +4,15 @@
 **/README.Docker.md
 **/chat_doc
 **/.gitignore
+
+.git
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.DS_Store
+.env
+venv
+*.pdf
+*.log
+tests
