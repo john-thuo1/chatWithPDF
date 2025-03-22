@@ -1,11 +1,16 @@
 services:
-  docuchat:
-    build: .
+  app:
+    image: chat_app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # env_file:
+    #   - .env
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
     ports:
       - "8501:8501"
-    environment:
-      - PYTHONUNBUFFERED=1
-    user: "user"
     volumes:
-      - .:/docuChat
-    restart: unless-stopped
+      - .:/chat_app
+    
+  
