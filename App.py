@@ -1,4 +1,3 @@
-from dotenv import load_dotenv
 from PyPDF2 import PdfReader
 import streamlit as st
 from langchain.chains.question_answering import load_qa_chain
@@ -11,14 +10,54 @@ from utilities.utils import setup_logger
 # Setup logger
 Logger = setup_logger(logger_file="app")
 
-# Load Env 
-load_dotenv()
 
 
 def main() -> None:
-    st.title("Chat with your PDF 💬")
+    """Main application function."""
+    # Custom styling
+    st.markdown(
+        """
+    <style>
+        .main-title {
+            font-size: 2.5em !important;
+            color: #2E86C1;
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+        .chat-message {
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .user-message {
+            background-color: #f0f8ff;
+            border: 1px solid #2E86C1;
+        }
+        .assistant-message {
+            background-color: #f5f5f5;
+            border: 1px solid #5D6D7E;
+        }
+    </style>
+    """,
+        unsafe_allow_html=True,
+    )
 
-    pdf = st.file_uploader("Upload your PDF Document", type="pdf")
+    st.markdown(
+        '<div class="main-title">📄 DocuChat AI  🤖<br><div style="font-size: 0.6em;">Your Intelligent Document Conversationalist</div></div>',
+        unsafe_allow_html=True,
+    )
+
+    api_key = st.sidebar.text_input("Enter your OpenAI API key:", type="password")
+    if not api_key:
+        st.warning("🔑 Please enter your OpenAI API key to proceed")
+        st.stop()
+
+    llm = OpenAI(api_key=api_key, temperature=0.3)
+
+    # PDF Upload Section
+    pdf = st.sidebar.file_uploader("Upload PDF Document", type="pdf")   
 
     if pdf is not None:
         Logger.info("PDF uploaded successfully.")
@@ -29,7 +68,7 @@ def main() -> None:
 
         knowledgeBase = process_text_with_splitter(text, page_numbers)
 
-        query = st.text_input("Ask a question to the PDF")
+        query = st.chat_input("Ask a question about the document...")
         cancel_button = st.button("Cancel")
 
         if cancel_button:
@@ -40,7 +79,6 @@ def main() -> None:
             Logger.info(f"Received query: {query}")
             docs = knowledgeBase.similarity_search(query)
 
-            llm = OpenAI()
             chain = load_qa_chain(llm, chain_type="stuff")
 
             input_data = {"input_documents": docs, "question": query}
