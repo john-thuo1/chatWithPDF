@@ -80,7 +80,7 @@ dependencies = [
     "pydeck==0.9.1",
     "Pygments==2.19.1",
     "Pympler==1.1",
-    "PyPDF2==3.0.1",
+    "PyMuPDF==1.25.4",
     "pyrsistent==0.20.0",
     "pytest==8.3.4",
     "python-dateutil==2.9.0.post0",
