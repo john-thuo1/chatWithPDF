@@ -3,9 +3,9 @@ requires = ["setuptools>=42", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "chatWithPDF"
-version = "0.1.0"
-description = "Project allows users to chat with their uploaded PDF Docs consuming OpenAI model API"
+name = "DocuChat AI"
+version = "0.0.2"
+description = "Project allows users to query their uploaded PDF Docs using RAG Technique. The project consumes OpenAI model API and langchain"
 authors = [
     { name = "john", email = "email.com" }
 ]
@@ -42,6 +42,7 @@ dependencies = [
     "httpx-sse==0.4.0",
     "idna==3.10",
     "importlib_metadata==8.5.0",
+    "iniconfig==2.0.0",
     "Jinja2==3.1.5",
     "jiter==0.8.2",
     "jsonpatch==1.33",
@@ -81,6 +82,7 @@ dependencies = [
     "Pympler==1.1",
     "PyPDF2==3.0.1",
     "pyrsistent==0.20.0",
+    "pytest==8.3.4",
     "python-dateutil==2.9.0.post0",
     "python-dotenv==1.0.1",
     "pytz==2024.2",

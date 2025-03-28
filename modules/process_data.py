@@ -2,25 +2,36 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import FAISS
 from utilities.utils import setup_logger
-from typing import List, Tuple
+from typing import IO, Dict, Tuple, List
+import pymupdf
+
 
 
 Logger = setup_logger(logger_file="app")
 
 
-def extract_text_with_page_numbers(pdf) -> Tuple[str, List[int]]:
-    text = ""
-    page_numbers = []
+def extract_text_with_page_numbers(pdf_file: IO[bytes]) -> Tuple[str, Dict[int, str]]:
+    """
+    Use PyMuPDF (imported as pymupdf) to extract text from the PDF while keeping track of page numbers.
 
-    for page_number, page in enumerate(pdf.pages, start=1):
-        extracted_text = page.extract_text()
-        if extracted_text:
-            text += extracted_text
-            page_numbers.extend([page_number] * len(extracted_text.split("\n")))
-        else:
-            Logger.warning(f"No text found on page {page_number}.")
+    Args:
+        pdf_file (IO[bytes]): A binary file-like object containing the PDF.
 
-    return text, page_numbers
+    Returns:
+        Tuple[str, Dict[int, str]]:
+            - full_text: Concatenated text from all pages.
+            - page_texts: Dictionary mapping page numbers (1-indexed) to their respective text.
+    """
+    pdf_file.seek(0)
+    # Open the PDF using the new pymupdf API
+    doc = pymupdf.open(stream=pdf_file.read(), filetype="pdf")
+    full_text: str = ""
+    page_texts: Dict[int, str] = {}
+    for i, page in enumerate(doc):
+        text: str = page.get_text("text")
+        full_text += text + "\n"
+        page_texts[i + 1] = text
+    return full_text, page_texts
 
 
 def process_text_with_splitter(text: str, page_numbers: List[int]) -> FAISS:
