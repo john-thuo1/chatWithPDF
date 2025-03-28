@@ -4,7 +4,6 @@ This project allows users to upload PDF documents and ask questions about their 
 ## Project Screen
 ![image](https://github.com/user-attachments/assets/6e6c1810-5729-4e59-83a0-5518c7538b74)
 
-![image](https://github.com/user-attachments/assets/51803340-474b-41a7-a2e9-3c8898bb0f2f)
 
 ## Installation
 
